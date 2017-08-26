@@ -1,0 +1,63 @@
+<html>
+	<meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <title>SMART-SCAN</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- stylesheet for application-->
+	<link rel="stylesheet" href="style.css">
+	<body>
+		<h1>Cat Example</h1>
+		<img src="http://www.whatitreatedtoday.com/wp-content/uploads/2014/02/SnowshoeCatLayingDown.ashx_-e1392572276122.jpeg"/>
+		<div id="imgTest"></div>
+		
+		<div>
+			{{#each result.data}}
+				<a href="http://localhost:3000?data={{images.standard_resolution.url}}">
+				<img class="IG-PIC" src='{{images.standard_resolution.url}}'/>
+				</a>
+			{{/each}}
+		</div>
+		<h1>Instagram API</h1>
+		<div id ="profile_pics"></div>
+		<div class="list-container">
+		<table class="table table-striped">
+			<thead class="thead-default">
+				<th>#</th>
+				<th> Prediction Name </th>
+				<th> Prediction % </th>
+			</thead>
+			<tbody>
+			{{#each prediction}}
+			<tr>
+				<td scope="row">{{@index}}</td>
+				<td>
+					<label class="radio-inline">
+						<input type="radio" class="radio" id="prediction-{{@index}}" name="prediction" value={{name}}>{{name}}
+					</label>
+				</td>
+				<td>
+					<p>{{value}}</p>
+				</td>		
+			</tr>
+				{{/each}}
+			</tbody>
+		</table>
+		<div id="loader"></div>
+		<div id="giphy"></div>
+		<script src="config.js"></script>
+		<script src="index.js"></script>
+
+	</body>
+</html>

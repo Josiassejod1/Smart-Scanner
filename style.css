@@ -1,0 +1,33 @@
+#profile_pics img{
+			width: 350px;
+			height: 250px;
+		}
+		#profile_pics img:hover {
+			opacity: .5;
+			border-style: dashed;
+			border-width: 2px;
+		}
+
+		#col img {
+			border-width: 2px;
+		}
+
+		#drop-box{
+			background-color: teal;
+			width: 350px;
+			height:350px;
+			text-align: center;
+			border-style: dashed;
+			border-color: white;
+			border-width: 2px;
+
+		}
+
+		#drop-box p{
+
+			color: white;
+			position: relative;
+			vertical-align: middle;
+			line-height: 350px;
+
+		}
