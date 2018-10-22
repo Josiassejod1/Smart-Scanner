@@ -1,47 +1,29 @@
 
 'use strict'
-
+const $ = require('jquery');
 const Hapi = require('hapi');
 const Request = require('request');
 const Vision = require('vision');
 const Handlebars = require('handlebars');
-const LodashFilter = require('lodash.filter');
-const LodashTake = require('lodash.take');
+//const LodashFilter = require('lodash.filter');
+//const LodashTake = require('lodash.take');
 const Clarifai = require('clarifai');
 const async = require('async');
 const Inert =  require('inert');
 const Path = require('path');
 const ENV = require('dotenv').config();
 
-
-
-
-
-
 var apiKey = process.env.MACHINE_LEARNING_API_KEY;
-var host = process.env.DB_HOST;
-var port = process.env.DB_PORT;
-var IG_Key = process.env.INSTAGRAM_API_KEY;
 
 const app = new Clarifai.App({
 		apiKey: apiKey
 	});
 
-const server = new Hapi.Server({
-	connections: {
-        routes: {
-            files: {
-                relativeTo: __dirname
-            }
-        }
-    }
-});
-
-//Utilized hapi.js server as connection
+const server = new Hapi.Server();
 
 server.connection({
-	host: host,
-	port: port
+	host: process.env.IP,
+	port: process.env.PORT
 });
 
 //Gets index.html route
@@ -79,7 +61,6 @@ server.start((err) => {
 
 //Gets updated predictions from API
 		
-		
 server.route({
 	method :'GET',
 	path: '/',
@@ -87,14 +68,15 @@ server.route({
 
 		//Gets on src url for the image that is clicked.
 		var igSrc = request.query.data;
+		console.log(igSrc);
 		var img_src = "";
 		if (igSrc === undefined) {
 			//Sets the first image that the prediction API recognizes from the API
-			img_src = 'http://www.whatitreatedtoday.com/wp-content/uploads/2014/02/SnowshoeCatLayingDown.ashx_-e1392572276122.jpeg';
+			img_src = "http://dalvin.net/profile.jpg";
 			} else {
 				img_src = igSrc;
 			}
-		//Outputs predictions from the program
+    	 
 		app.models.predict(Clarifai.GENERAL_MODEL, img_src).then(
   			function(response) {
    				//Outputs a collections of predictions
@@ -111,10 +93,3 @@ server.route({
    				});
 			}
 		});
-
-	
-		//Test output to return outputs for predictions
-  		//		Outputs prediction to console for testing purpose
-    				
-   				
-

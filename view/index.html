@@ -19,12 +19,12 @@
 	<link rel="stylesheet" href="style.css">
 	<body>
 		<h1>Cat Example</h1>
-		<img src="http://www.whatitreatedtoday.com/wp-content/uploads/2014/02/SnowshoeCatLayingDown.ashx_-e1392572276122.jpeg"/>
+		<img src="http://www.dalvin.net/profile.jpg"/>
 		<div id="imgTest"></div>
 		
 		<div>
 			{{#each result.data}}
-				<a href="http://localhost:3000?data={{images.standard_resolution.url}}">
+				<a href="http://localhost:8080?data={{images.standard_resolution.url}}">
 				<img class="IG-PIC" src='{{images.standard_resolution.url}}'/>
 				</a>
 			{{/each}}

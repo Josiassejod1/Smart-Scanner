@@ -1,6 +1,4 @@
-		
-		
-		
+	
 		/*
 		Function gets the value of the image selected. posts the value
 		to the server for the clarifia API to use
@@ -9,7 +7,8 @@
 		{
 			var query = $(image).attr('src');
 				$.ajax({
-					url:'http://localhost:3000',
+					//change based on port url name
+					url:"http://smart-scanner-josiassejod1.c9users.io",
 					data:{data:query},
 					crossDomain:true 
 					}).done(function(response)
